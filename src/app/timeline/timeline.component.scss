@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+:host {
+    position: relative;
+    display: block;
+    padding: 50px 0;
+
+    & .mgl-timeline-line {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        background-color: rgb(160, 160, 160);
+    }
+}

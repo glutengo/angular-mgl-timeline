@@ -1,0 +1,8 @@
+<ng-content select="mgl-timeline-entry-side"></ng-content>
+<div class="mgl-timeline-entry-card" [@expand]="expandAnimation">
+  <div class="mgl-timeline-entry-card-header" (click)="toggle()">
+    <ng-content select="mgl-timeline-entry-dot"></ng-content>
+    <ng-content select="mgl-timeline-entry-header"></ng-content>
+  </div>
+  <ng-content select="mgl-timeline-entry-content"></ng-content>
+</div>

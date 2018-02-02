@@ -1,0 +1,36 @@
+@import '~@angular/material/theming';
+
+@mixin mgl-timeline-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  mgl-timeline-entry {
+
+    & .mgl-timeline-entry-card {
+        @include mat-elevation(4);
+        background-color: map-get($background, card);
+        color: map-get($foreground, base);
+
+        & .mgl-timeline-entry-card-header {
+            background-color: map-get($background, app-bar);
+        }
+    }
+
+    mgl-timeline-entry-dot {
+      @include mat-elevation(2);
+
+      &.primary {
+          background-color: mat-color($primary);
+      }
+
+      &.accent {
+          background-color: mat-color($accent);
+      }
+   }
+
+  }
+
+  
+}
