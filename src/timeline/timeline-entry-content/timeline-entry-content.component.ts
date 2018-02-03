@@ -13,10 +13,10 @@ export class MglTimelineEntryContentComponent {
   expanded: boolean = false;
 
   @HostBinding('@expand')
-  get routeAnimation() {
+  get expandAnimation() {
     this.params.height_expanded = this.elementRef.nativeElement.scrollHeight + 'px';
     return {
-      value: this.expanded,
+      value: this.expanded ? 'expanded' : 'collapsed',
       params: this.params
     }
   }

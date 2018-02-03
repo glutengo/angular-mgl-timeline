@@ -3,16 +3,16 @@ import { styles, params } from './timeline-entry-dot.styles';
 
 export const animations: AnimationTriggerMetadata[] = [
     trigger('expand', [
-      state('false', style(styles.collapsed), { params: params.default }),
-      state('true', style(styles.expanded), { params: params.default }),
-      transition('false => true', [
+      state('collapsed', style(styles.collapsed), { params: params.default }),
+      state('expanded', style(styles.expanded), { params: params.default }),
+      transition('collapsed => expanded', [
         animate('300ms ease', keyframes([
           style({ ...styles.collapsed }),
           style({ ...styles.transition }),
           style({ ...styles.expanded }),
         ]))
       ], { params: params.default }),
-      transition('true => false', [
+      transition('expanded => collapsed', [
         animate('150ms ease', keyframes([
           style({ ...styles.expanded }),
           style({ ...styles.transition }),

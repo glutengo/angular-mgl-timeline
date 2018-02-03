@@ -46,7 +46,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
       size_collapsed: this._size + 'px'
     };
     return {
-      value: this.expanded,
+      value: this.expanded ? 'expanded' : 'collapsed',
       params: this.params
     };
   }

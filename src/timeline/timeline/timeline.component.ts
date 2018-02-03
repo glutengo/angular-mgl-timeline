@@ -32,6 +32,10 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
     return this._mobile;
   }
 
+  get mobileAnimation() {
+    return this.mobile ? 'mobile' : 'desktop'
+  }
+
   private subscriptions: Subscription[] = [];
 
   @ContentChildren(MglTimelineEntryComponent) 
@@ -49,7 +53,7 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
 
   ngAfterViewInit() {
     this.mobile = this.elementRef.nativeElement.clientWidth < 640;
-    this.updateContent();
+    setTimeout(() => this.updateContent());
     this.content.changes.subscribe(() => this.updateContent());
   }
 
@@ -61,7 +65,7 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
           this.subscriptions.push(
             entry.changed.subscribe(state => {
               if (state === true) {
-                this.content.filter(e => e !== entry).forEach(e => e.collapse())
+                this.content.filter(e => e !== entry).forEach(e => e.collapse());
               }
             }));
         }

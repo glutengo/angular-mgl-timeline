@@ -1,7 +1,7 @@
 import { MglTimelineEntrySideComponent } from './../timeline-entry-side/timeline-entry-side.component';
 import { Subscription } from 'rxjs/Subscription';
 import { MglTimelineEntryDotComponent } from './../timeline-entry-dot/timeline-entry-dot.component';
-import { Component, AfterViewInit, Output, EventEmitter, HostBinding, ContentChild, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, Output, EventEmitter, HostBinding, ContentChild, OnDestroy, ElementRef } from '@angular/core';
 import { MglTimelineEntryContentComponent } from '../timeline-entry-content/timeline-entry-content.component';
 import { MglTimelineEntryHeaderComponent } from '../timeline-entry-header/timeline-entry-header.component';
 import { params } from './timeline-entry.styles';
@@ -14,6 +14,8 @@ import { animations } from './timeline-entry.animations';
   animations: animations
 })
 export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
+
+  constructor(private elementRef: ElementRef) {}
 
   private params = { ...params.default };
   private subscriptions: Subscription[] = [];
@@ -69,7 +71,7 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
       ...(this.mobile ? params.mobile : (this.alternate ? params.alternate : params.default))
     };
     return {
-      value: this.expanded,
+      value: this.expanded ? 'expanded' : 'collapsed',
       params: this.params
     };
   }
@@ -89,7 +91,7 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     setTimeout(() => {
       if (this.dot) {
         this.subscriptions.push(this.dot.animationDone.subscribe(event => {
-          if (event.toState === true) {
+          if (event.toState === 'expanded') {
             this.content.expanded = true;
           } else {
             this.animationDone.emit(event);
@@ -97,9 +99,10 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
         }));
       }
       this.subscriptions.push(this.content.animationDone.subscribe(event => {
-        if (this.dot && event.toState === false) {
+        if (this.dot && event.toState === 'collapsed') {
           this.dot.expanded = false;
         } else {
+          this.elementRef.nativeElement.scrollIntoView({behavior: 'smooth'});
           this.animationDone.emit(event);
         }
       }));
@@ -119,6 +122,8 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
   }
 
   toggle() {
+    console.log('toggle');
+    console.log(this.expanded);
     this.expanded = !this.expanded;
   }
 }
