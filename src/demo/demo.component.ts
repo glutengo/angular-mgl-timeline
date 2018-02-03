@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './demo.component.html',
+  styleUrls: ['./demo.component.scss']
 })
-export class AppComponent {
+export class DemoComponent {
   title = 'app';
 
   alternate: boolean = false;
@@ -25,14 +25,9 @@ export class AppComponent {
       header: 'header',
       content: 'content'
     })
-    console.log(this.entries);
   }
 
   removeEntry() {
     this.entries.pop();
-  }
-
-  animation(event) {
-    console.log(event);
   }
 }

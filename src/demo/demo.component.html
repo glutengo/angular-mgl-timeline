@@ -1,3 +1,11 @@
+<button (click)="addEntry()">Add Entry</button>
+<button (click)="removeEntry()">Remove Entry</button>
+<button (click)="alternate = !alternate">Toggle Alternate</button>
+<button (click)="toggle = !toggle">Toggle Toggle</button>
+<button (click)="color = !color">Toggle Color</button>
+<button (click)="size = size + 10">Increase size</button>
+<button (click)="size = size - 10">Decrease size</button>
+
 <mgl-timeline [toggle]="toggle" [alternate]="alternate">
   <mgl-timeline-entry *ngFor="let entry of entries">
     <mgl-timeline-entry-header>
@@ -12,11 +20,3 @@
     <mgl-timeline-entry-side>2017</mgl-timeline-entry-side>
   </mgl-timeline-entry>
 </mgl-timeline>
-
-<button (click)="addEntry()">Add Entry</button>
-<button (click)="removeEntry()">Remove Entry</button>
-<button (click)="alternate = !alternate">Toggle Alternate</button>
-<button (click)="toggle = !toggle">Toggle Toggle</button>
-<button (click)="color = !color">Toggle Color</button>
-<button (click)="size = size + 10">Increase size</button>
-<button (click)="size = size - 10">Decrease size</button>

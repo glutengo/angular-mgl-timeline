@@ -51,7 +51,6 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
     };
   }
 
-
   constructor(private elementRef: ElementRef) {}
 
   ngAfterViewInit() {

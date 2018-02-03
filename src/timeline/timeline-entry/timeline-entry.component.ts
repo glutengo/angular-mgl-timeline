@@ -1,7 +1,7 @@
 import { MglTimelineEntrySideComponent } from './../timeline-entry-side/timeline-entry-side.component';
 import { Subscription } from 'rxjs/Subscription';
 import { MglTimelineEntryDotComponent } from './../timeline-entry-dot/timeline-entry-dot.component';
-import { Component, Input, ViewChild, ElementRef, OnInit, AfterViewInit, Output, EventEmitter, HostBinding, HostListener, Renderer, AfterViewChecked, ContentChild, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, Output, EventEmitter, HostBinding, ContentChild, OnDestroy } from '@angular/core';
 import { MglTimelineEntryContentComponent } from '../timeline-entry-content/timeline-entry-content.component';
 import { MglTimelineEntryHeaderComponent } from '../timeline-entry-header/timeline-entry-header.component';
 import { params } from './timeline-entry.styles';
@@ -18,7 +18,6 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
   private params = { ...params.default };
   private subscriptions: Subscription[] = [];
 
-  @Input()
   set expanded(expanded) {
     if (this.dot && expanded) {
       this.dot.expanded = expanded;
@@ -35,7 +34,6 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
   @HostBinding('class.alternate')
   private _alternate: boolean = false;
 
-  @Input()
   set alternate(alternate) {
     this._alternate = alternate;
     if (this.dot) {
@@ -52,7 +50,6 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
 
   private _mobile: boolean = false;
 
-  @Input()
   set mobile(mobile) {
     this._mobile = mobile;
     if (this.dot) {
@@ -87,8 +84,6 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
   @ContentChild(MglTimelineEntryHeaderComponent) header: MglTimelineEntryHeaderComponent;
   @ContentChild(MglTimelineEntryDotComponent) dot: MglTimelineEntryDotComponent;
   @ContentChild(MglTimelineEntrySideComponent) side: MglTimelineEntrySideComponent;
-
-  constructor(private renderer: Renderer, private element: ElementRef) { }
 
   ngAfterViewInit() {
     setTimeout(() => {

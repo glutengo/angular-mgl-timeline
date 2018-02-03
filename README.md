@@ -1,6 +1,6 @@
 # MglAngularTimeline
 
-This is a vertical timelne component for Angular 5. It was built to be used with Angular Material but it can also be used without it. Entries consist of a header and a content component. The header is always visible. The content will be revealed via an animation when the entry is expanded.
+This is a vertical timelne component for Angular 5. Angular Material is supported but not mandatory.
 
 ## Getting started
 
@@ -53,17 +53,59 @@ export class AppModule { }
 </mgl-timeline>
 ```
 
-## API
+## Angular Material
 
-### Timeline
-The timeline is the main container component. It can handle the state of its child components (entries) concerning toggle, alternate and mobile. The vertical line is also part of this component.
+The package includes a theme for angular material. In your own angular material theme:
 
-Children: List<TimelineEntry>
+```scss
+@import '~@angular/material/theming';
+@import '~mgl-angular-timeline/theme';
+...
 
-#### Inputs:
+@include angular-material-theme($your-theme);
+@include mgl-timeline-theme($your-theme);
+```
+If the theme is included, the components will be styled according to `$your-theme` including support for primary and accent colors for the dot.
 
-* `toggle`: boolean
-* `alternate`: boolean
+## Components
+
+### MglTimeline
+
+#### Content
+| tag                    | number |
+| ---------------------- | ------ |
+| `<mgl-timeline-entry>` | n      |
+
+#### Inputs
+
+| property  | type    | default | impact                                                                                         |
+| --------- | ------- | ------- | ---------------------------------------------------------------------------------------------- |
+| toggle    | boolean | true    | If set to true, expanding one entry will collapse all other entries and vice versa             |
+| alternate | boolean | true    | If set to true, entries will be displayed alternately (left / right). No effect in mobile mode |
+
+
+### MglTimelineEntry
+
+#### Content
+| tag                            | number |
+| ------------------------------ | ------ |
+| `<mgl-timeline-entry-header>`  | 1      |
+| `<mgl-timeline-entry-content>` | 1      |
+| `<mgl-timeline-entry-dot>`     | 0...1  |
+| `<mgl-timeline-entry-side>`    | 0...1  |
+
+### MglTimelineEntryHeader
+
+### MglTimelineEntryContent
+
+### MglTimelineEntryDot
+
+#### Inputs
+| property | type   | default | impact                                                                                                             |
+| -------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------ |
+| size     | number | 45      | Size of the dot [px]                                                                                               |
+| color    | string | primary | Will be set as class name of the dot element. primary and accent can be used when using the angular material theme |
+
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.

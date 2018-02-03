@@ -1,4 +1,4 @@
-import { Component, HostBinding, Output, EventEmitter, HostListener, ElementRef } from '@angular/core';
+import { Component, HostBinding, EventEmitter, HostListener, ElementRef } from '@angular/core';
 import { styles, params } from './timeline-entry-content.styles';
 import { animations } from './timeline-entry-content.animations';
 
@@ -23,7 +23,6 @@ export class MglTimelineEntryContentComponent {
 
   public params = { ...params };
 
-  @Output()
   public animationDone = new EventEmitter<any>();
 
   @HostListener('@expand.done', ['$event'])
