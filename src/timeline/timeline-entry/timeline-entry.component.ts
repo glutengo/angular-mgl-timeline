@@ -4,20 +4,16 @@ import { MglTimelineEntryDotComponent } from './../timeline-entry-dot/timeline-e
 import { Component, AfterViewInit, Output, EventEmitter, HostBinding, ContentChild, OnDestroy, ElementRef } from '@angular/core';
 import { MglTimelineEntryContentComponent } from '../timeline-entry-content/timeline-entry-content.component';
 import { MglTimelineEntryHeaderComponent } from '../timeline-entry-header/timeline-entry-header.component';
-import { params } from './timeline-entry.styles';
-import { animations } from './timeline-entry.animations';
 
 @Component({
   selector: 'mgl-timeline-entry',
   templateUrl: './timeline-entry.component.html',
-  styleUrls: ['./timeline-entry.component.scss'],
-  animations: animations
+  styleUrls: ['./timeline-entry.component.scss']
 })
 export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
 
   constructor(private elementRef: ElementRef) {}
 
-  private params = { ...params.default };
   private subscriptions: Subscription[] = [];
 
   set expanded(expanded) {
@@ -33,7 +29,6 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     return this.dot ? (this.dot.expanded && this.content.expanded) : this.content.expanded;
   }
 
-  @HostBinding('class.alternate')
   private _alternate: boolean = false;
 
   set alternate(alternate) {
@@ -41,11 +36,9 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     if (this.dot) {
       this.dot.alternate = this._alternate;
     }
-    if (this.side) {
-      this.side.alternate = this._alternate;
-    }
   }
 
+  @HostBinding('class.alternate')
   get alternate() {
     return this._alternate;
   }
@@ -57,23 +50,11 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     if (this.dot) {
       this.dot.mobile = this._mobile;
     }
-    if (this.side) {
-      this.side.mobile = this._mobile;
-    }
   }
 
+  @HostBinding('class.mobile')
   get mobile() {
     return this._mobile;
-  }
-
-  get expandAnimation() {
-    this.params = {
-      ...(this.mobile ? params.mobile : (this.alternate ? params.alternate : params.default))
-    };
-    return {
-      value: this.expanded ? 'expanded' : 'collapsed',
-      params: this.params
-    };
   }
 
   @Output()
@@ -122,8 +103,6 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
   }
 
   toggle() {
-    console.log('toggle');
-    console.log(this.expanded);
     this.expanded = !this.expanded;
   }
 }

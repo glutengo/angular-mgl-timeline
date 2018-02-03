@@ -10,5 +10,16 @@
         top: 0;
         height: 100%;
         background-color: rgb(160, 160, 160);
+        left: 50%;
+        width: 10px;
+        transform: translateX(-50%);
+    }
+
+
+    &.mobile {
+        & .mgl-timeline-line {
+            left: 20px;
+            transform: none;
+        }
     }
 }
