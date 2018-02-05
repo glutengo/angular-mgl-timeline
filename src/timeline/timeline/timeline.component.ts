@@ -2,14 +2,10 @@ import { QueryList, ElementRef } from '@angular/core';
 import { MglTimelineEntryComponent } from './../timeline-entry/timeline-entry.component';
 import { Component, Input, ContentChildren, AfterViewInit, HostBinding, EventEmitter, Output, HostListener, OnChanges, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { animations } from './timeline.animations';
-import { params } from './timeline.styles';
-
 @Component({
   selector: 'mgl-timeline',
   templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.scss'],
-  animations: animations
+  styleUrls: ['./timeline.component.scss']
 })
 export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy {
 
@@ -28,6 +24,7 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
     this._mobile = mobile;
   }
 
+  @HostBinding('class.mobile')
   get mobile() {
     return this._mobile;
   }
@@ -49,7 +46,7 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
 
   ngAfterViewInit() {
     this.mobile = this.elementRef.nativeElement.clientWidth < 640;
-    this.updateContent();
+    setTimeout(() => this.updateContent());
     this.content.changes.subscribe(() => this.updateContent());
   }
 
@@ -61,11 +58,12 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
           this.subscriptions.push(
             entry.changed.subscribe(state => {
               if (state === true) {
-                this.content.filter(e => e !== entry).forEach(e => e.collapse())
+                this.content.filter(e => e !== entry).forEach(e => e.collapse());
               }
             }));
         }
         entry.alternate = this.alternate ? index % 2 !== 0 : false;
+        entry.mobile = this.mobile;
       });
 
     }

@@ -4,31 +4,34 @@
     display: block;
     position: relative;
     margin-bottom: 50px;
+    width: calc(50% - 5px);
 
     &.alternate {
+        margin-left: calc(50% + 5px);
 
         & .side {
-            left: auto;
-            right: 50%;
+            left: 25%;
         }
 
     }
 
+    &.mobile {
+        width: calc(100% - 30px);
+        margin-left: 30px;
+    }
+
     & .mgl-timeline-entry-card {
+        background-color: rgb(240, 240, 240);
 
          & .mgl-timeline-entry-card-header {
              position: relative;
+             background-color: rgb(230, 230, 230);
          }
     }
 
     & .side {
-        position: absolute;
-        left: auto;
-        right: 25%;
-        width: 25%;
-        text-align: center;
-        top: 16px;
-        font-size: 20px;
+        left: 75%;
+        transform: translateX(-50%) translateY(-50%);
     }
 
 }
