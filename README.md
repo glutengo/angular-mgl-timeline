@@ -110,7 +110,10 @@ If the theme is included, the components will be styled according to `$your-them
 ## Polyfills
 
 ### Smoothscroll
-When an entry is toggled, it will scroll into view. Smooth behavior is currently not supported in Chrome. A polyfill is in [iamdustan's smoothscroll](https://github.com/iamdustan/smoothscroll)
+When an entry is toggled, it will scroll into view. Smooth behavior is currently not supported in Chrome. A polyfill is available in [iamdustan's smoothscroll](https://github.com/iamdustan/smoothscroll)
+
+### Web Animations API
+Animations are implemented with Angular animations which are based on the web animations API which has not landed in Safari and Edge yet. A polyfill is available in [Web Animations JS](https://github.com/web-animations/web-animations-js)
 
 ## About
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.

@@ -1,7 +1,7 @@
 {
   "name": "angular-mgl-timeline",
   "author": "Markus Glutting",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -11,6 +11,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "package": "ng-packagr -p ng-package.json && cp src/timeline/timeline.theme.scss dist/theme.scss"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/glutengo/angular-mgl-timeline.git"
   },
   "private": false,
   "dependencies": {
@@ -46,6 +50,7 @@
     "tslint": "~5.9.1",
     "typescript": "~2.5.3",
     "smoothscroll-polyfill": "^0.4.0",
+    "web-animations-js": "^2.3.1",
     "@angular/material": "^5.1.0",
     "@angular/cdk": "^5.1.0"
   }

@@ -46,7 +46,7 @@ export class MglTimelineEntryContentComponent implements AfterViewInit {
       const animation = this.animationBuilder
         .build([
           style(this.getCollapsedStyle()),
-          animate('75ms ease', style(this.getExpandedStyle())),
+          animate('100ms ease', style(this.getExpandedStyle())),
         ])
         .create(this.elementRef.nativeElement)
       animation.onDone(() => this.animationDone.emit({ toState: 'expanded' }));
@@ -57,7 +57,7 @@ export class MglTimelineEntryContentComponent implements AfterViewInit {
       const animation = this.animationBuilder
         .build([
           style(this.getExpandedStyle()),
-          animate('150ms ease', style(this.getCollapsedStyle())),
+          animate('200ms ease', style(this.getCollapsedStyle())),
         ])
         .create(this.elementRef.nativeElement)
       animation.onDone(() => this.animationDone.emit({ toState: 'collapsed' }));

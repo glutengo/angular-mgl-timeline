@@ -83,7 +83,6 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
     return {
       ...this.getCollapsedStyle(),
       left: '50%',
-      transform: 'translateY(-50%) translateX(-50%)',
       opacity: 0.5,
       boxShadow: 'none'
     }
@@ -93,7 +92,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
     return {
       ...this.getTransitionStyle(),
       left: '0',
-      transform: 'translateY(-50%)',
+      transform: 'translateX(0) translateY(-50%)',
       width: '100%',
       height: '100%',
       opacity: 1,
@@ -107,8 +106,8 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
       this.animation = this.animationBuilder
         .build([
           style(this.getCollapsedStyle()),
-          animate('150ms ease', style(this.getTransitionStyle())),
-          animate('150ms ease', style(this.getExpandedStyle())),
+          animate('200ms ease', style(this.getTransitionStyle())),
+          animate('200ms ease', style(this.getExpandedStyle())),
         ])
         .create(this.elementRef.nativeElement)
       this.animation.onDone(() => this.animationDone.emit({ toState: 'expanded' }));
@@ -119,8 +118,8 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
       this.animation = this.animationBuilder
         .build([
           style(this.getExpandedStyle()),
-          animate('75ms ease', style(this.getTransitionStyle())),
-          animate('75ms ease', style(this.getCollapsedStyle())),
+          animate('100ms ease', style(this.getTransitionStyle())),
+          animate('100ms ease', style(this.getCollapsedStyle())),
         ])
         .create(this.elementRef.nativeElement)
       this.animation.onDone(() => this.animationDone.emit({ toState: 'collapsed' }));
