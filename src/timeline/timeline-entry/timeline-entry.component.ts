@@ -36,6 +36,9 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     if (this.dot) {
       this.dot.alternate = this._alternate;
     }
+    if (this.side) {
+      this.side.alternate = this._alternate;
+    }
   }
 
   @HostBinding('class.alternate')

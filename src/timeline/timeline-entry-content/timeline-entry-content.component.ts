@@ -20,6 +20,7 @@ export class MglTimelineEntryContentComponent implements AfterViewInit {
   }
 
   set expanded(expanded: boolean) {
+    this.contentHeight = this.elementRef.nativeElement.scrollHeight;
     const animate = this._expanded !== expanded;
     this._expanded = expanded;
     animate ? this.animate() : this.setStyle
