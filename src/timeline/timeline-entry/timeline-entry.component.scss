@@ -9,7 +9,7 @@
     &.alternate {
         margin-left: calc(50% + 5px);
 
-        & .side {
+        & mgl-timeline-entry-side {
             left: 25%;
         }
 
@@ -29,7 +29,7 @@
          }
     }
 
-    & .side {
+    & mgl-timeline-entry-side {
         left: 75%;
         transform: translateX(-50%) translateY(-50%);
     }

@@ -5,4 +5,9 @@ import { Component, HostBinding, Input } from '@angular/core';
   templateUrl: './timeline-entry-side.component.html',
   styleUrls: ['./timeline-entry-side.component.scss']
 })
-export class MglTimelineEntrySideComponent {}
+export class MglTimelineEntrySideComponent {
+
+  @HostBinding('class.alternate')
+  alternate = false;
+
+}
