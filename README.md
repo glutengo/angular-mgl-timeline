@@ -1,6 +1,6 @@
 # angular-mgl-timeline
 
-This is a animated vertical timeline component for Angular 5. Angular Material is supported but not mandatory.
+This is a animated vertical timeline component for Angular 2+. Angular Material is supported but not mandatory.
 
 ## Online Demo
 
@@ -121,6 +121,7 @@ Animations are implemented with Angular animations which are based on the web an
 
 ## About
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+The NPM Version was packend with [ng-packagr](https://github.com/dherges/ng-packagr).
 
 ## License
 MIT License (c) Markus Glutting
