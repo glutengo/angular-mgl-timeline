@@ -31,6 +31,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   @Input()
   set size(size: number) {
     this._size = size;
+    this.setStyle();
   }
 
   get size() {
@@ -56,7 +57,6 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   }
 
   set expanded(expanded: boolean) {
-    console.log(expanded);
     const animate = this._expanded !== expanded;
     this._expanded = expanded;
     animate ? this.animate() : this.setStyle()
@@ -74,7 +74,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
       height: this.size + 'px',
       opacity: 1,
       transform: 'translateY(-50%) translateX(-50%)',
-      boxShadow: this.initialStyle.boxShadow,
+      boxShadow: this.initialStyle && this.initialStyle.boxShadow,
       borderRadius: '100px'
     }
   }

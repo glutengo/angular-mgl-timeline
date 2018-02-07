@@ -10,4 +10,7 @@ export class MglTimelineEntrySideComponent {
   @HostBinding('class.alternate')
   alternate = false;
 
+  @HostBinding('class.mobile')
+  mobile = false;
+
 }

@@ -29,6 +29,18 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
     return this._mobile;
   }
 
+  private _focusOnOpen = false;
+
+  @Input()
+  set focusOnOpen(focusOnOpen) {
+    this.content && this.content.forEach(entry => entry.focusOnOpen = focusOnOpen);
+    this._focusOnOpen = focusOnOpen;
+  }
+
+  get focusOnOpen() {
+    return this._focusOnOpen;
+  }
+
   private subscriptions: Subscription[] = [];
 
   @ContentChildren(MglTimelineEntryComponent) 
@@ -64,6 +76,7 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
         }
         entry.alternate = this.alternate ? index % 2 !== 0 : false;
         entry.mobile = this.mobile;
+        entry.focusOnOpen = this.focusOnOpen;
       });
 
     }

@@ -2,6 +2,10 @@
 
 This is a animated vertical timeline component for Angular 5. Angular Material is supported but not mandatory.
 
+## Online Demo
+
+An Online Demo with live editing is available on [stackblitz](https://stackblitz.com/edit/angular-mgl-timeline).
+
 ## Getting started
 
 1) run `npm install --save mgl-angular-timeline` 
@@ -78,11 +82,11 @@ If the theme is included, the components will be styled according to `$your-them
 
 #### Inputs
 
-| property  | type    | default | impact                                                                                         |
-| --------- | ------- | ------- | ---------------------------------------------------------------------------------------------- |
-| toggle    | boolean | true    | If set to true, expanding one entry will collapse all other entries and vice versa             |
-| alternate | boolean | true    | If set to true, entries will be displayed alternately (left / right). No effect in mobile mode |
-
+| property     | type    | default | impact                                                                                         |
+| ------------ | ------- | ------- | ---------------------------------------------------------------------------------------------- |
+| toggle       | boolean | true    | If set to true, expanding one entry will collapse all other entries and vice versa             |
+| alternate    | boolean | true    | If set to true, entries will be displayed alternately (left / right). No effect in mobile mode |
+| focusOnOpen  | boolean | false   | If set to true, expanding an entry will scroll it into view                                    |
 
 ### MglTimelineEntry
 

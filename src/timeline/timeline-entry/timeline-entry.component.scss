@@ -8,11 +8,6 @@
 
     &.alternate {
         margin-left: calc(50% + 5px);
-
-        & mgl-timeline-entry-side {
-            left: 25%;
-        }
-
     }
 
     &.mobile {
@@ -28,10 +23,4 @@
              background-color: rgb(230, 230, 230);
          }
     }
-
-    & mgl-timeline-entry-side {
-        left: 75%;
-        transform: translateX(-50%) translateY(-50%);
-    }
-
 }

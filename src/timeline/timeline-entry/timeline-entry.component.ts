@@ -16,6 +16,8 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
+  focusOnOpen: boolean = false;
+
   set expanded(expanded) {
     if (this.dot && expanded) {
       this.dot.expanded = expanded;
@@ -53,6 +55,9 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     if (this.dot) {
       this.dot.mobile = this._mobile;
     }
+    if (this.side) {
+      this.side.mobile = this._mobile;
+    }
   }
 
   @HostBinding('class.mobile')
@@ -86,7 +91,9 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
         if (this.dot && event.toState === 'collapsed') {
           this.dot.expanded = false;
         } else {
-          this.elementRef.nativeElement.scrollIntoView({behavior: 'smooth'});
+          if (this.focusOnOpen) {
+            this.elementRef.nativeElement.scrollIntoView({behavior: 'smooth'});
+          }
           this.animationDone.emit(event);
         }
       }));
