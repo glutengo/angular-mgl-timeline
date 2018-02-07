@@ -5,8 +5,12 @@
   $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
+  $typographyConfig: mat-typography-config();
+
 
   mgl-timeline {
+    font-family: mat-font-family($typographyConfig);
+
       & mgl-timeline-entry {
 
         & .mgl-timeline-entry-card {

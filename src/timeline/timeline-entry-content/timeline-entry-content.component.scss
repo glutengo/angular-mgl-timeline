@@ -2,4 +2,8 @@
     position: relative;
     display: block;
     overflow: hidden;
+
+    & > div {
+        padding: 10px;
+    }
 }
