@@ -1,7 +1,7 @@
 {
   "name": "angular-mgl-timeline",
   "author": "Markus Glutting",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -17,7 +17,7 @@
     "url": "https://github.com/glutengo/angular-mgl-timeline.git"
   },
   "private": false,
-  "dependencies": {
+  "peerDependencies": {
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
