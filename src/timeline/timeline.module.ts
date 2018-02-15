@@ -5,11 +5,7 @@ import { MglTimelineEntrySideComponent } from './timeline-entry-side/timeline-en
 import { MglTimelineEntryComponent } from './timeline-entry/timeline-entry.component';
 import { MglTimelineComponent } from './timeline/timeline.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 @NgModule({
-  imports: [
-    CommonModule
-  ],
   declarations: [
     MglTimelineComponent,
     MglTimelineEntryComponent,
