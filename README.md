@@ -12,12 +12,14 @@ An Online Demo with live editing is available on [stackblitz](https://stackblitz
 2) in your app module: 
 ```typescript
 ...
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MglTimelineModule } from 'angular-mgl-timeline';
 
 @NgModule({
   ...
   imports: [
     ...
+    BrowserAnimationsModule,
     MglTimelineModule
   ]
 })
@@ -78,7 +80,7 @@ If the theme is included, the components will be styled according to `$your-them
 #### Content
 | tag                    | number |
 | ---------------------- | ------ |
-| `<mgl-timeline-entry>` | n      |
+| `<mgl-timeline-entry>` |     n  |
 
 #### Inputs
 
@@ -93,8 +95,8 @@ If the theme is included, the components will be styled according to `$your-them
 #### Content
 | tag                            | number |
 | ------------------------------ | ------ |
-| `<mgl-timeline-entry-header>`  | 1      |
-| `<mgl-timeline-entry-content>` | 1      |
+| `<mgl-timeline-entry-header>`  |     1  |
+| `<mgl-timeline-entry-content>` |     1  |
 | `<mgl-timeline-entry-dot>`     | 0...1  |
 | `<mgl-timeline-entry-side>`    | 0...1  |
 
@@ -107,7 +109,7 @@ If the theme is included, the components will be styled according to `$your-them
 #### Inputs
 | property | type   | default | impact                                                                                                             |
 | -------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------ |
-| size     | number | 45      | Size of the dot [px]                                                                                               |
+| size     | number |     45  | Size of the dot [px]                                                                                               |
 | color    | string | primary | Will be set as class name of the dot element. primary and accent can be used when using the angular material theme |
 
 
