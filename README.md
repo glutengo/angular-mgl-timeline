@@ -8,11 +8,11 @@ An Online Demo with live editing is available on [stackblitz](https://stackblitz
 
 ## Getting started
 
-1) run `npm install --save mgl-angular-timeline` 
+1) run `npm install --save angular-mgl-timeline` 
 2) in your app module: 
 ```typescript
 ...
-import { MglTimelineModule } from 'mgl-angular-timeline';
+import { MglTimelineModule } from 'angular-mgl-timeline';
 
 @NgModule({
   ...
