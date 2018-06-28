@@ -31,8 +31,8 @@ export class AppModule { }
 ```xml
 <mgl-timeline>
     <mgl-timeline-entry>
-        <mgl-timeline-header>Header</mgl-timeline-header>
-        <mgl-timeline-content>Content</mgl-timeline-content>
+        <mgl-timeline-entry-header>Header</mgl-timeline-entry-header>
+        <mgl-timeline-entry-content>Content</mgl-timeline-entry-content>
     </mgl-timeline-entry>
 </mgl-timeline>
 ```
