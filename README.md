@@ -65,7 +65,7 @@ The package includes a theme for angular material. In your own angular material 
 
 ```scss
 @import '~@angular/material/theming';
-@import '~mgl-angular-timeline/theme';
+@import '~angular-mgl-timeline/theme';
 ...
 
 @include angular-material-theme($your-theme);
