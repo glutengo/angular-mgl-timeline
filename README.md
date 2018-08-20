@@ -118,6 +118,9 @@ If the theme is included, the components will be styled according to `$your-them
 ### Smoothscroll
 When an entry is toggled, it will scroll into view. Smooth behavior is currently not supported in Chrome. A polyfill is available in [iamdustan's smoothscroll](https://github.com/iamdustan/smoothscroll)
 
+### ClassList
+`ClassList.toggle` was used at some points, including the second parameter. If you need to support [browsers which do not support this](https://caniuse.com/#feat=classlist), be sure to use a polyfill, e.g. [this one](https://github.com/eligrey/classList.js/).
+
 ### Web Animations API
 Animations are implemented with Angular animations which are based on the web animations API which has not landed in Safari and Edge yet. A polyfill is available in [Web Animations JS](https://github.com/web-animations/web-animations-js)
 
