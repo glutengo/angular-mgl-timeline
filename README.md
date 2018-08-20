@@ -110,7 +110,7 @@ If the theme is included, the components will be styled according to `$your-them
 | property | type   | default | impact                                                                                                             |
 | -------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------ |
 | size     | number |     45  | Size of the dot [px]                                                                                               |
-| color    | string | primary | Will be set as class name of the dot element. primary and accent can be used when using the angular material theme |
+| class    | string | primary | Will be set as class name of the dot element. primary and accent can be used when using the angular material theme |
 
 
 ## Polyfills
