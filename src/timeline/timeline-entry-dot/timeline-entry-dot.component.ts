@@ -1,4 +1,5 @@
-import { Component, Input, HostBinding, ElementRef, EventEmitter, Output, HostListener, AfterViewInit, Renderer } from '@angular/core';
+import { Component, Input, HostBinding, ElementRef, EventEmitter, Output, 
+  HostListener, AfterViewInit, Renderer, ChangeDetectorRef } from '@angular/core';
 import { AnimationBuilder, style, animate } from '@angular/animations';
 
 @Component({
@@ -21,13 +22,6 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   @HostBinding('class')
   color = 'primary';
 
-  constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef, private renderer: Renderer) { }
-
-  ngAfterViewInit() {
-    this.initialStyle = window.getComputedStyle(this.elementRef.nativeElement);
-    this.setStyle();
-  }
-
   @Input()
   set size(size: number) {
     this._size = size;
@@ -48,6 +42,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   }
 
   set mobile(mobile: boolean) {
+    console.log('dot set mobile');
     this._mobile = mobile;
     this.setStyle();
   }
@@ -64,6 +59,15 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
 
   get expanded() {
     return this._expanded;
+  }
+
+  constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef, 
+  private renderer: Renderer, private changeDetectorRef: ChangeDetectorRef) { }
+
+  ngAfterViewInit() {
+    this.initialStyle = window.getComputedStyle(this.elementRef.nativeElement);
+    this.setStyle();
+    this.changeDetectorRef.detectChanges();
   }
 
   private getCollapsedStyle() {

@@ -1,6 +1,6 @@
-import { QueryList, ElementRef } from '@angular/core';
+import { QueryList, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { MglTimelineEntryComponent } from './../timeline-entry/timeline-entry.component';
-import { Component, Input, ContentChildren, AfterViewInit, HostBinding, EventEmitter, Output, HostListener, OnChanges, OnDestroy } from '@angular/core';
+import { Component, Input, ContentChildren, AfterViewInit, EventEmitter, Output, HostListener, OnChanges, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 @Component({
   selector: 'mgl-timeline',
@@ -15,18 +15,13 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
   @Input()
   alternate: boolean = true;
 
-  private _mobile: boolean = false;
-
-  set mobile(mobile: boolean) {
-    if (mobile !== this._mobile) {
-      this.content && this.content.forEach(entry => entry.mobile = mobile);
-    } 
-    this._mobile = mobile;
+  set mobile(value: boolean) {
+    this.content && this.content.forEach(entry => entry.mobile = value);
+    this.elementRef.nativeElement.classList.toggle('mobile', value)
   }
 
-  @HostBinding('class.mobile')
   get mobile() {
-    return this._mobile;
+    return this.elementRef.nativeElement.classList.contains('mobile');
   }
 
   private _focusOnOpen = false;
@@ -43,10 +38,10 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
 
   private subscriptions: Subscription[] = [];
 
-  @ContentChildren(MglTimelineEntryComponent) 
+  @ContentChildren(MglTimelineEntryComponent)
   private content: QueryList<MglTimelineEntryComponent>;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnChanges(simpleChanges) {
     this.updateContent();
@@ -59,7 +54,9 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
   ngAfterViewInit() {
     this.mobile = this.elementRef.nativeElement.clientWidth < 640;
     setTimeout(() => this.updateContent());
-    this.content.changes.subscribe(() => this.updateContent());
+    this.content.changes.subscribe(changes => {
+      this.updateContent();
+    });
   }
 
   private updateContent() {
@@ -78,7 +75,6 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
         entry.mobile = this.mobile;
         entry.focusOnOpen = this.focusOnOpen;
       });
-
     }
   }
 

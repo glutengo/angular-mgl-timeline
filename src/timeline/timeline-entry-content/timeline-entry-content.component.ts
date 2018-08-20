@@ -1,5 +1,5 @@
 import { AnimationBuilder, style, animate } from '@angular/animations';
-import { Component, HostBinding, EventEmitter, HostListener, ElementRef, AfterViewInit, Renderer } from '@angular/core';
+import { Component, EventEmitter, HostListener, ElementRef, AfterViewInit, Renderer } from '@angular/core';
 
 @Component({
   selector: 'mgl-timeline-entry-content',
@@ -8,16 +8,10 @@ import { Component, HostBinding, EventEmitter, HostListener, ElementRef, AfterVi
 })
 export class MglTimelineEntryContentComponent implements AfterViewInit {
 
-  private _expanded: boolean = false;
   private contentHeight;
   animationDone = new EventEmitter<any>();
 
-  constructor(private elementRef: ElementRef, private animationBuilder: AnimationBuilder, private renderer: Renderer) { }
-
-  ngAfterViewInit(): void {
-    this.contentHeight = this.elementRef.nativeElement.scrollHeight;
-    this.setStyle();
-  }
+  private _expanded: boolean = false;
 
   set expanded(expanded: boolean) {
     this.contentHeight = this.elementRef.nativeElement.scrollHeight;
@@ -28,6 +22,13 @@ export class MglTimelineEntryContentComponent implements AfterViewInit {
 
   get expanded() {
     return this._expanded;
+  }
+
+  constructor(private elementRef: ElementRef, private animationBuilder: AnimationBuilder, private renderer: Renderer) { }
+
+  ngAfterViewInit(): void {
+    this.contentHeight = this.elementRef.nativeElement.scrollHeight;
+    this.setStyle();
   }
 
   private getCollapsedStyle() {
