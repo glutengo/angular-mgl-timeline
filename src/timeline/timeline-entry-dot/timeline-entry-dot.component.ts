@@ -18,9 +18,9 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
 
   animationDone = new EventEmitter<any>();
 
-  @Input()
+  @Input('class')
   @HostBinding('class')
-  color = 'primary';
+  clazz = 'primary';
 
   @Input()
   set size(size: number) {
@@ -42,7 +42,6 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   }
 
   set mobile(mobile: boolean) {
-    console.log('dot set mobile');
     this._mobile = mobile;
     this.setStyle();
   }
