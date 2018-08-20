@@ -65,7 +65,7 @@ The package includes a theme for angular material. In your own angular material 
 
 ```scss
 @import '~@angular/material/theming';
-@import '~mgl-angular-timeline/theme';
+@import '~angular-mgl-timeline/theme';
 ...
 
 @include angular-material-theme($your-theme);
@@ -110,13 +110,16 @@ If the theme is included, the components will be styled according to `$your-them
 | property | type   | default | impact                                                                                                             |
 | -------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------ |
 | size     | number |     45  | Size of the dot [px]                                                                                               |
-| color    | string | primary | Will be set as class name of the dot element. primary and accent can be used when using the angular material theme |
+| class    | string | primary | Will be set as class name of the dot element. primary and accent can be used when using the angular material theme |
 
 
 ## Polyfills
 
 ### Smoothscroll
 When an entry is toggled, it will scroll into view. Smooth behavior is currently not supported in Chrome. A polyfill is available in [iamdustan's smoothscroll](https://github.com/iamdustan/smoothscroll)
+
+### ClassList
+`ClassList.toggle` was used at some points, including the second parameter. If you need to support [browsers which do not support this](https://caniuse.com/#feat=classlist), be sure to use a polyfill, e.g. [this one](https://github.com/eligrey/classList.js/).
 
 ### Web Animations API
 Animations are implemented with Angular animations which are based on the web animations API which has not landed in Safari and Edge yet. A polyfill is available in [Web Animations JS](https://github.com/web-animations/web-animations-js)

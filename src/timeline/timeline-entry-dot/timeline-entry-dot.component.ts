@@ -1,4 +1,5 @@
-import { Component, Input, HostBinding, ElementRef, EventEmitter, Output, HostListener, AfterViewInit, Renderer } from '@angular/core';
+import { Component, Input, HostBinding, ElementRef, EventEmitter, Output, 
+  AfterViewInit, Renderer, ChangeDetectorRef } from '@angular/core';
 import { AnimationBuilder, style, animate } from '@angular/animations';
 
 @Component({
@@ -17,16 +18,9 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
 
   animationDone = new EventEmitter<any>();
 
-  @Input()
+  @Input('class')
   @HostBinding('class')
-  color = 'primary';
-
-  constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef, private renderer: Renderer) { }
-
-  ngAfterViewInit() {
-    this.initialStyle = window.getComputedStyle(this.elementRef.nativeElement);
-    this.setStyle();
-  }
+  clazz = 'primary';
 
   @Input()
   set size(size: number) {
@@ -64,6 +58,15 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
 
   get expanded() {
     return this._expanded;
+  }
+
+  constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef, 
+  private renderer: Renderer, private changeDetectorRef: ChangeDetectorRef) { }
+
+  ngAfterViewInit() {
+    this.initialStyle = window.getComputedStyle(this.elementRef.nativeElement);
+    this.setStyle();
+    this.changeDetectorRef.detectChanges();
   }
 
   private getCollapsedStyle() {

@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'mgl-timeline-entry-side',
@@ -7,10 +7,14 @@ import { Component, HostBinding, Input } from '@angular/core';
 })
 export class MglTimelineEntrySideComponent {
 
-  @HostBinding('class.alternate')
-  alternate = false;
+  set alternate(value) {
+    this.elementRef.nativeElement.classList.toggle('alternate', value);
+  }
 
-  @HostBinding('class.mobile')
-  mobile = false;
+  set mobile(value) {
+    this.elementRef.nativeElement.classList.toggle('mobile', value);
+  }
+  
+  constructor(private elementRef: ElementRef) { }
 
 }
