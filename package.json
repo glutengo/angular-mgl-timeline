@@ -62,9 +62,7 @@
     "tslint": "~5.9.1",
     "typescript": "~2.9.2",
     "web-animations-js": "^2.3.1",
-    "zone.js": "^0.8.26"
-  },
-  "dependencies": {
+    "zone.js": "^0.8.26",
     "rxjs-compat": "^6.0.0-rc.0"
   }
 }

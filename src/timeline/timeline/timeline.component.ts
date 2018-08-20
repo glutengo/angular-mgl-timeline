@@ -78,7 +78,7 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
     }
   }
 
-  @HostListener('window:resize')
+  @HostListener('window:resize', ['$event'])
   onResize(ev: KeyboardEvent) {
     this.mobile = this.elementRef.nativeElement.clientWidth < 640;
   }

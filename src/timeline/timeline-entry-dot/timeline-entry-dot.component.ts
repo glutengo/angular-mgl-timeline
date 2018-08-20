@@ -1,5 +1,5 @@
 import { Component, Input, HostBinding, ElementRef, EventEmitter, Output, 
-  HostListener, AfterViewInit, Renderer, ChangeDetectorRef } from '@angular/core';
+  AfterViewInit, Renderer, ChangeDetectorRef } from '@angular/core';
 import { AnimationBuilder, style, animate } from '@angular/animations';
 
 @Component({

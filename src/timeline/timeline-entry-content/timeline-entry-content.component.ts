@@ -1,5 +1,5 @@
 import { AnimationBuilder, style, animate } from '@angular/animations';
-import { Component, EventEmitter, HostListener, ElementRef, AfterViewInit, Renderer } from '@angular/core';
+import { Component, EventEmitter, ElementRef, AfterViewInit, Renderer } from '@angular/core';
 
 @Component({
   selector: 'mgl-timeline-entry-content',
