@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/angular-mgl-timeline.svg)](https://badge.fury.io/js/angular-mgl-timeline)
+
 # angular-mgl-timeline
 
 This is a animated vertical timeline component for Angular 2+. Angular Material is supported but not mandatory.
