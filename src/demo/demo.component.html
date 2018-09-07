@@ -7,7 +7,7 @@
 <button (click)="size = size - 10">Decrease size</button>
 
 <mgl-timeline [toggle]="toggle" [alternate]="alternate" [focusOnOpen]="false">
-  <mgl-timeline-entry *ngFor="let entry of entries">
+  <mgl-timeline-entry *ngFor="let entry of entries; let i = index" (expand)="onExpand($event, i)">
     <mgl-timeline-entry-header>
       <div>{{entry.header}}</div>
     </mgl-timeline-entry-header>

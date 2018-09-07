@@ -91,6 +91,7 @@ If the theme is included, the components will be styled according to `$your-them
 | focusOnOpen  | boolean | false   | If set to true, expanding an entry will scroll it into view                                    |
 
 ### MglTimelineEntry
+The `expanded` class will be added to the timeline-entry compnent when the entry is expanded.  
 
 #### Content
 | tag                            | number |
@@ -99,6 +100,12 @@ If the theme is included, the components will be styled according to `$your-them
 | `<mgl-timeline-entry-content>` |     1  |
 | `<mgl-timeline-entry-dot>`     | 0...1  |
 | `<mgl-timeline-entry-side>`    | 0...1  |
+
+#### Outputs
+
+| event           | type    | description
+| --------------- | ------- | --------------------------------------------
+| expand          | boolean | fired when an entry is expanded / collapsed. Value is true for expanded and false for collapsed
 
 ### MglTimelineEntryHeader
 
