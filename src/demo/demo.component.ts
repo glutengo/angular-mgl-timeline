@@ -30,4 +30,8 @@ export class DemoComponent {
   removeEntry() {
     this.entries.pop();
   }
+
+  onExpand(event, index) {
+    console.log(event, index);
+  }
 }

@@ -1,3 +1,4 @@
+import {HostBinding} from '@angular/core';
 import { MglTimelineEntrySideComponent } from './../timeline-entry-side/timeline-entry-side.component';
 import { Subscription } from 'rxjs/Subscription';
 import { MglTimelineEntryDotComponent } from './../timeline-entry-dot/timeline-entry-dot.component';
@@ -27,6 +28,7 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     this.changed.emit(expanded);
   }
 
+  @HostBinding('class.expanded')
   get expanded() {
     return this.dot ? (this.dot.expanded && this.content.expanded) : this.content.expanded;
   }
@@ -43,7 +45,7 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  @Output()
+  @Output('expand')
   changed = new EventEmitter<boolean>();
 
   @Output()
