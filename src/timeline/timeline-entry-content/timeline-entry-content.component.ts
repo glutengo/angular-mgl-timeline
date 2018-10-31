@@ -33,7 +33,7 @@ export class MglTimelineEntryContentComponent implements AfterViewInit {
 
   private getCollapsedStyle() {
     return {
-      height: 0
+      height: '0px'
     }
   }
 
