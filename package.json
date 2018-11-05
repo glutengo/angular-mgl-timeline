@@ -1,7 +1,7 @@
 {
   "name": "angular-mgl-timeline",
   "author": "Markus Glutting",
-  "version": "0.2.2",
+  "version": "0.3.0-SNAPSHOT",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
