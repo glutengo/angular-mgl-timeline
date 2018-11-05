@@ -1,6 +1,9 @@
-import { Component, Input, HostBinding, ElementRef, EventEmitter, Output, 
-  AfterViewInit, Renderer, ChangeDetectorRef } from '@angular/core';
+import {
+  Component, Input, HostBinding, ElementRef, EventEmitter, Output,
+  AfterViewInit, Renderer, ChangeDetectorRef, Inject
+} from '@angular/core';
 import { AnimationBuilder, style, animate } from '@angular/animations';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'mgl-timeline-entry-dot',
@@ -61,10 +64,11 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   }
 
   constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef, 
-  private renderer: Renderer, private changeDetectorRef: ChangeDetectorRef) { }
+  private renderer: Renderer, private changeDetectorRef: ChangeDetectorRef,
+  @Inject(DOCUMENT) private document) { }
 
   ngAfterViewInit() {
-    this.initialStyle = window.getComputedStyle(this.elementRef.nativeElement);
+    this.initialStyle = this.document.defaultView.getComputedStyle(this.elementRef.nativeElement);
     this.setStyle();
     this.changeDetectorRef.detectChanges();
   }
