@@ -1,4 +1,9 @@
-:host {
+mgl-timeline-entry-dot {
     display: block;
     position: absolute;
+
+    & div  {
+        height: 100%;
+        width: 100%;
+    }
 }

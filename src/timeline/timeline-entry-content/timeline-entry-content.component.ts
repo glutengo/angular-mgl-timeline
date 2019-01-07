@@ -1,10 +1,11 @@
 import { AnimationBuilder, style, animate } from '@angular/animations';
-import { Component, EventEmitter, ElementRef, AfterViewInit, Renderer } from '@angular/core';
+import { Component, EventEmitter, ElementRef, AfterViewInit, Renderer, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'mgl-timeline-entry-content',
   templateUrl: './timeline-entry-content.component.html',
-  styleUrls: ['./timeline-entry-content.component.scss']
+  styleUrls: ['./timeline-entry-content.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MglTimelineEntryContentComponent implements AfterViewInit {
 

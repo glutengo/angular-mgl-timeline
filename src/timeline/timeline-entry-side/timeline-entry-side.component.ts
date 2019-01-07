@@ -1,9 +1,10 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import { Component, Input, ElementRef, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'mgl-timeline-entry-side',
   templateUrl: './timeline-entry-side.component.html',
-  styleUrls: ['./timeline-entry-side.component.scss']
+  styleUrls: ['./timeline-entry-side.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MglTimelineEntrySideComponent {
 

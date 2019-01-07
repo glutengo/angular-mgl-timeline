@@ -1,4 +1,4 @@
-import {HostBinding} from '@angular/core';
+import {HostBinding, ViewEncapsulation} from '@angular/core';
 import { MglTimelineEntrySideComponent } from './../timeline-entry-side/timeline-entry-side.component';
 import { Subscription } from 'rxjs/Subscription';
 import { MglTimelineEntryDotComponent } from './../timeline-entry-dot/timeline-entry-dot.component';
@@ -11,7 +11,8 @@ import { MglTimelineEntryHeaderComponent } from '../timeline-entry-header/timeli
 @Component({
   selector: 'mgl-timeline-entry',
   templateUrl: './timeline-entry.component.html',
-  styleUrls: ['./timeline-entry.component.scss']
+  styleUrls: ['./timeline-entry.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
 
@@ -67,6 +68,9 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
           this.animationDone.emit(event);
         }
       }));
+      this.subscriptions.push(this.dot.expandEmitter.subscribe(event => {
+        this.toggle();
+      }));
     }
     if (this.content) {
       this.subscriptions.push(this.content.animationDone.subscribe(event => {
@@ -78,6 +82,9 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
           }
           this.animationDone.emit(event);
         }
+      }));
+      this.subscriptions.push(this.header.expandEmitter.subscribe(event => {
+        this.toggle();
       }));
     }
   }

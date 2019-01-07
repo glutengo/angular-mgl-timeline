@@ -1,6 +1,6 @@
 import {
   Component, Input, HostBinding, ElementRef, EventEmitter, Output,
-  AfterViewInit, Renderer, ChangeDetectorRef, Inject
+  AfterViewInit, Renderer, ChangeDetectorRef, Inject, ViewEncapsulation
 } from '@angular/core';
 import { AnimationBuilder, style, animate } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
@@ -8,7 +8,8 @@ import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'mgl-timeline-entry-dot',
   templateUrl: './timeline-entry-dot.component.html',
-  styleUrls: ['./timeline-entry-dot.component.scss']
+  styleUrls: ['./timeline-entry-dot.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MglTimelineEntryDotComponent implements AfterViewInit {
 
@@ -20,6 +21,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   private animation;
 
   animationDone = new EventEmitter<any>();
+  expandEmitter = new EventEmitter<any>();
 
   @Input('class')
   @HostBinding('class')
@@ -149,4 +151,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
     }
   }
 
+  toggle() {
+    this.expandEmitter.emit("dotClick");
+  }
 }
