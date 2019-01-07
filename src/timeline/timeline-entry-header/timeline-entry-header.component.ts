@@ -1,4 +1,4 @@
-import { Component, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'mgl-timeline-entry-header',
@@ -8,9 +8,4 @@ import { Component, EventEmitter, ViewEncapsulation } from '@angular/core';
 })
 export class MglTimelineEntryHeaderComponent {
   
-  expandEmitter = new EventEmitter<any>();
-
-  toggle() {
-    this.expandEmitter.emit("expandEvent");
-  }
 }

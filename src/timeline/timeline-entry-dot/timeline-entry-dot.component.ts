@@ -21,7 +21,6 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   private animation;
 
   animationDone = new EventEmitter<any>();
-  expandEmitter = new EventEmitter<any>();
 
   @Input('class')
   @HostBinding('class')
@@ -151,7 +150,4 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
     }
   }
 
-  toggle() {
-    this.expandEmitter.emit("dotClick");
-  }
 }

@@ -68,9 +68,6 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
           this.animationDone.emit(event);
         }
       }));
-      this.subscriptions.push(this.dot.expandEmitter.subscribe(event => {
-        this.toggle();
-      }));
     }
     if (this.content) {
       this.subscriptions.push(this.content.animationDone.subscribe(event => {
@@ -82,9 +79,6 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
           }
           this.animationDone.emit(event);
         }
-      }));
-      this.subscriptions.push(this.header.expandEmitter.subscribe(event => {
-        this.toggle();
       }));
     }
   }
@@ -111,7 +105,11 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     this.expanded = true;
   }
 
-  toggle() {
-    this.expanded = !this.expanded;
+  toggle($event) {
+    let headerFound = $event.path.filter(path => path.localName == 'mgl-timeline-entry-header').length > 0;
+    let dotFound =  $event.path.filter(path => path.localName == 'mgl-timeline-entry-dot').length > 0;
+    if (headerFound || dotFound) {
+      this.expanded = !this.expanded;
+    }
   }
 }
