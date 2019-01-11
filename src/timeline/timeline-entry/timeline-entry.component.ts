@@ -1,4 +1,4 @@
-import {HostBinding} from '@angular/core';
+import {HostBinding, ViewEncapsulation} from '@angular/core';
 import { MglTimelineEntrySideComponent } from './../timeline-entry-side/timeline-entry-side.component';
 import { Subscription } from 'rxjs/Subscription';
 import { MglTimelineEntryDotComponent } from './../timeline-entry-dot/timeline-entry-dot.component';
@@ -11,7 +11,8 @@ import { MglTimelineEntryHeaderComponent } from '../timeline-entry-header/timeli
 @Component({
   selector: 'mgl-timeline-entry',
   templateUrl: './timeline-entry.component.html',
-  styleUrls: ['./timeline-entry.component.scss']
+  styleUrls: ['./timeline-entry.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
 
@@ -104,7 +105,11 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     this.expanded = true;
   }
 
-  toggle() {
-    this.expanded = !this.expanded;
+  toggle($event) {
+    let headerFound = $event.path.filter(path => path.localName == 'mgl-timeline-entry-header').length > 0;
+    let dotFound =  $event.path.filter(path => path.localName == 'mgl-timeline-entry-dot').length > 0;
+    if (headerFound || dotFound) {
+      this.expanded = !this.expanded;
+    }
   }
 }
