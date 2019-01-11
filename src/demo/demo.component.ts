@@ -12,6 +12,7 @@ export class DemoComponent {
   toggle: boolean = false;
   color: boolean = false;
   size: number = 40;
+  side: string = 'left';
 
   entries = [
     {
@@ -33,5 +34,9 @@ export class DemoComponent {
 
   onExpand(event, index) {
     console.log(event, index);
+  }
+
+  toggleSide() {
+    this.side = this.side === 'left' ? 'right' : 'left';
   }
 }

@@ -53,7 +53,17 @@
     "typescript": "~3.2.2",
     "web-animations-js": "^2.3.1",
     "rxjs-compat": "^6.3.3",
-    "ng-packagr": "^4.4.5"
+    "ng-packagr": "^4.4.5",
+    "tsickle": "^0.34.0",
+    "@angular/animations": "^7.2.0",
+    "@angular/common": "^7.2.0",
+    "@angular/compiler": "^7.2.0",
+    "@angular/core": "^7.2.0",
+    "@angular/platform-browser": "^7.2.0",
+    "@angular/platform-browser-dynamic": "^7.2.0",
+    "core-js": "^2.6.2",
+    "rxjs": "^6.3.3",
+    "zone.js": "^0.8.27"
   },
   "dependencies": {
     "tslib": "^1.9.0"
