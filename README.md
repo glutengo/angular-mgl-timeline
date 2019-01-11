@@ -86,11 +86,12 @@ If the theme is included, the components will be styled according to `$your-them
 
 #### Inputs
 
-| property     | type    | default | impact                                                                                         |
-| ------------ | ------- | ------- | ---------------------------------------------------------------------------------------------- |
-| toggle       | boolean | true    | If set to true, expanding one entry will collapse all other entries and vice versa             |
-| alternate    | boolean | true    | If set to true, entries will be displayed alternately (left / right). No effect in mobile mode |
-| focusOnOpen  | boolean | false   | If set to true, expanding an entry will scroll it into view                                    |
+| property     | type    | default  | impact                                                                                          |
+| ------------ | ------- | -------- | ----------------------------------------------------------------------------------------------- |
+| toggle       | boolean | true     | If set to true, expanding one entry will collapse all other entries and vice versa              |
+| alternate    | boolean | true     | If set to true, entries will be displayed alternately (left / right). No effect in mobile mode  |
+| focusOnOpen  | boolean | false    | If set to true, expanding an entry will scroll it into view                                     |
+| side         | string  | 'left'   | Changes side (`'left'` | `'right'`) the entries are shown on. No effect if alternate is `true`  |
 
 ### MglTimelineEntry
 The `expanded` class will be added to the timeline-entry compnent when the entry is expanded.  
