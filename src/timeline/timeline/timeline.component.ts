@@ -14,6 +14,9 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
   toggle: boolean = true;
 
   @Input()
+  mobileWidthThreshold: number = 640;
+
+  @Input()
   alternate: boolean = true;
 
   @Input()
@@ -56,7 +59,7 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
   }
 
   ngAfterViewInit() {
-    this.mobile = this.elementRef.nativeElement.clientWidth < 640;
+    this.mobile = this.elementRef.nativeElement.clientWidth < this.mobileWidthThreshold;
     setTimeout(() => this.updateContent());
     this.content.changes.subscribe(changes => {
       this.updateContent();
@@ -84,6 +87,7 @@ export class MglTimelineComponent implements AfterViewInit, OnChanges, OnDestroy
 
   @HostListener('window:resize', ['$event'])
   onResize(ev: KeyboardEvent) {
-    this.mobile = this.elementRef.nativeElement.clientWidth < 640;
+    console.log(this.mobileWidthThreshold);
+    this.mobile = this.elementRef.nativeElement.clientWidth < this.mobileWidthThreshold;
   }
 }

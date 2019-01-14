@@ -7,7 +7,11 @@
 <button (click)="size = size - 10">Decrease size</button>
 <button (click)="toggleSide()">Toggle Side</button>
 
-<mgl-timeline [toggle]="toggle" [alternate]="alternate" [focusOnOpen]="false" [side]="side">
+<button (click)="mobileWidthThreshold = mobileWidthThreshold + 10">Increase Mobile Threshold</button>
+<button (click)="mobileWidthThreshold = mobileWidthThreshold - 10">Decrease Mobile Threshold</button> 
+Mobile Threshold: {{mobileWidthThreshold}}
+
+<mgl-timeline [toggle]="toggle" [alternate]="alternate" [focusOnOpen]="false" [side]="side" [(mobileWidthThreshold)]="mobileWidthThreshold">
   <mgl-timeline-entry *ngFor="let entry of entries; let i = index" (expand)="onExpand($event, i)">
     <mgl-timeline-entry-header>
       <div>{{entry.header}}</div>
