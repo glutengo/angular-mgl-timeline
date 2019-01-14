@@ -11,7 +11,7 @@ import { DemoComponent } from './demo.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MglTimelineModule,
+    MglTimelineModule
   ],
   providers: [],
   bootstrap: [DemoComponent]
