@@ -105,11 +105,23 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
     this.expanded = true;
   }
 
-  toggle($event) {
-    let headerFound = $event.path.filter(path => path.localName == 'mgl-timeline-entry-header').length > 0;
-    let dotFound =  $event.path.filter(path => path.localName == 'mgl-timeline-entry-dot').length > 0;
+
+  toggle(event: MouseEvent) {
+    const headerFound = this.containsInPath(event, 'mgl-timeline-entry-header');
+    const dotFound = this.containsInPath(event, 'mgl-timeline-entry-dot');
     if (headerFound || dotFound) {
       this.expanded = !this.expanded;
     }
+  }
+
+  private containsInPath(mouseEvent: MouseEvent, name: string): boolean {
+    let currentElem: Element = mouseEvent.target as Element;
+    while (currentElem) {
+      if (currentElem.localName === name) {
+        return true;
+      }
+      currentElem = currentElem.parentElement;
+    }
+    return false;
   }
 }
