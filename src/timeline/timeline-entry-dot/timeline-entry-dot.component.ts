@@ -1,6 +1,6 @@
 import {
   Component, Input, HostBinding, ElementRef, EventEmitter, Output,
-  AfterViewInit, Renderer, ChangeDetectorRef, Inject, ViewEncapsulation
+  AfterViewInit, Renderer2, ChangeDetectorRef, Inject, ViewEncapsulation
 } from '@angular/core';
 import { AnimationBuilder, style, animate } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
@@ -64,8 +64,8 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
     return this._expanded;
   }
 
-  constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef, 
-  private renderer: Renderer, private changeDetectorRef: ChangeDetectorRef,
+  constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef,
+  private renderer: Renderer2, private changeDetectorRef: ChangeDetectorRef,
   @Inject(DOCUMENT) private document) { }
 
   ngAfterViewInit() {
@@ -139,7 +139,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
     this.destroyAnimation();
     const baseStyle = this.expanded ? this.getExpandedStyle() : this.getCollapsedStyle();
     Object.keys(baseStyle).forEach(property => {
-      this.renderer.setElementStyle(this.elementRef.nativeElement, property, baseStyle[property])
+      this.renderer.setStyle(this.elementRef.nativeElement, property, baseStyle[property])
     })
   }
 
