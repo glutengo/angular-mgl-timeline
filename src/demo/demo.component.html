@@ -6,6 +6,8 @@
 <button (click)="size = size + 10">Increase size</button>
 <button (click)="size = size - 10">Decrease size</button>
 <button (click)="toggleSide()">Toggle Side</button>
+<button (click)="dotAnimation = !dotAnimation">Toggle dot animation</button>
+<button (click)="contentAnimation = !contentAnimation">Toggle content animation</button>
 
 <button (click)="mobileWidthThreshold = mobileWidthThreshold + 10">Increase Mobile Threshold</button>
 <button (click)="mobileWidthThreshold = mobileWidthThreshold - 10">Decrease Mobile Threshold</button> 
@@ -16,12 +18,17 @@ Mobile Threshold: {{mobileWidthThreshold}}
     <mgl-timeline-entry-header>
       <div>{{entry.header}}</div>
     </mgl-timeline-entry-header>
-    <mgl-timeline-entry-content>
+    <mgl-timeline-entry-content 
+      [expandAnimationTiming]="contentAnimation ? '200ms ease' : '0ms'"
+      [collapseAnimationTiming]="contentAnimation ? '100ms ease' : '0ms'">
       <div>{{entry.content}}</div>
       <div>{{entry.content}}</div>
       <div>{{entry.content}}</div>
     </mgl-timeline-entry-content>
-    <mgl-timeline-entry-dot [class]="color ? 'primary' : 'accent'" [size]="size"></mgl-timeline-entry-dot>
+    <mgl-timeline-entry-dot [class]="color ? 'primary' : 'accent'" [size]="size" 
+      [expandAnimationTiming]="dotAnimation ? '200ms ease' : '0ms'"
+      [collapseAnimationTiming]="dotAnimation ? '100ms ease' : '0ms'">
+    </mgl-timeline-entry-dot>
     <mgl-timeline-entry-side>2017</mgl-timeline-entry-side>
   </mgl-timeline-entry>
 </mgl-timeline>

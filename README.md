@@ -115,6 +115,14 @@ The `expanded` class will be added to the timeline-entry compnent when the entry
 
 ### MglTimelineEntryContent
 
+#### Inputs
+
+| property                 | type    | default      | impact                                                                                         |
+| ------------------------ | ------- | ------------ | ---------------------------------------------------------------------------------------------- |
+| expandAnimationTiming    | string  | '200ms ease' | Controls the animation speed of the content of an entry. Set to `0ms` to disable the animation |
+| collapseAnimationTiming  | string  | '100ms ease' | Controls the animation speed of the content of an entry. Set to `0ms` to disable the animation |
+
+
 ### MglTimelineEntryDot
 
 #### Inputs
@@ -122,6 +130,8 @@ The `expanded` class will be added to the timeline-entry compnent when the entry
 | -------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------ |
 | size     | number |     45  | Size of the dot [px]                                                                                               |
 | class    | string | primary | Will be set as class name of the dot element. primary and accent can be used when using the angular material theme |
+| expandAnimationTiming    | string  | '200ms ease' | Controls the animation speed of the dot of an entry. Set to `0ms` to disable the animation   |
+| collapseAnimationTiming  | string  | '100ms ease' | Controls the animation speed of the dot of an entry. Set to `0ms` to disable the animation   |
 
 
 ## Polyfills

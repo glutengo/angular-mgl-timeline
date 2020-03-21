@@ -1,6 +1,6 @@
 import {
   Component, Input, HostBinding, ElementRef, EventEmitter, Output,
-  AfterViewInit, Renderer, ChangeDetectorRef, Inject, ViewEncapsulation
+  AfterViewInit, Renderer2, ChangeDetectorRef, Inject, ViewEncapsulation
 } from '@angular/core';
 import { AnimationBuilder, style, animate } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
@@ -21,6 +21,13 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   private animation;
 
   animationDone = new EventEmitter<any>();
+
+  @Input()
+  expandAnimationTiming = '200ms ease';
+
+  @Input()
+  collapseAnimationTiming = '100ms ease';
+
 
   @Input('class')
   @HostBinding('class')
@@ -64,8 +71,8 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
     return this._expanded;
   }
 
-  constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef, 
-  private renderer: Renderer, private changeDetectorRef: ChangeDetectorRef,
+  constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef,
+  private renderer: Renderer2, private changeDetectorRef: ChangeDetectorRef,
   @Inject(DOCUMENT) private document) { }
 
   ngAfterViewInit() {
@@ -114,8 +121,8 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
       this.animation = this.animationBuilder
         .build([
           style(this.getCollapsedStyle()),
-          animate('200ms ease', style(this.getTransitionStyle())),
-          animate('200ms ease', style(this.getExpandedStyle())),
+          animate(this.expandAnimationTiming, style(this.getTransitionStyle())),
+          animate(this.expandAnimationTiming, style(this.getExpandedStyle())),
         ])
         .create(this.elementRef.nativeElement)
       this.animation.onDone(() => this.animationDone.emit({ toState: 'expanded' }));
@@ -126,8 +133,8 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
       this.animation = this.animationBuilder
         .build([
           style(this.getExpandedStyle()),
-          animate('100ms ease', style(this.getTransitionStyle())),
-          animate('100ms ease', style(this.getCollapsedStyle())),
+          animate(this.collapseAnimationTiming, style(this.getTransitionStyle())),
+          animate(this.collapseAnimationTiming, style(this.getCollapsedStyle())),
         ])
         .create(this.elementRef.nativeElement)
       this.animation.onDone(() => this.animationDone.emit({ toState: 'collapsed' }));
@@ -139,7 +146,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
     this.destroyAnimation();
     const baseStyle = this.expanded ? this.getExpandedStyle() : this.getCollapsedStyle();
     Object.keys(baseStyle).forEach(property => {
-      this.renderer.setElementStyle(this.elementRef.nativeElement, property, baseStyle[property])
+      this.renderer.setStyle(this.elementRef.nativeElement, property, baseStyle[property])
     })
   }
 
