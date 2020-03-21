@@ -1,5 +1,5 @@
 import { AnimationBuilder, style, animate } from '@angular/animations';
-import { Component, EventEmitter, ElementRef, AfterViewInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, ElementRef, AfterViewInit, Renderer2, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'mgl-timeline-entry-content',
@@ -8,6 +8,12 @@ import { Component, EventEmitter, ElementRef, AfterViewInit, Renderer2, ViewEnca
   encapsulation: ViewEncapsulation.None
 })
 export class MglTimelineEntryContentComponent implements AfterViewInit {
+
+  @Input()
+  expandAnimationTiming = '200ms ease';
+
+  @Input()
+  collapseAnimationTiming = '100ms ease';
 
   private contentHeight;
   animationDone = new EventEmitter<any>();
@@ -49,7 +55,7 @@ export class MglTimelineEntryContentComponent implements AfterViewInit {
       const animation = this.animationBuilder
         .build([
           style(this.getCollapsedStyle()),
-          animate('100ms ease', style(this.getExpandedStyle())),
+          animate(this.expandAnimationTiming, style(this.getExpandedStyle())),
         ])
         .create(this.elementRef.nativeElement)
       animation.onDone(() => this.animationDone.emit({ toState: 'expanded' }));
@@ -60,7 +66,7 @@ export class MglTimelineEntryContentComponent implements AfterViewInit {
       const animation = this.animationBuilder
         .build([
           style(this.getExpandedStyle()),
-          animate('200ms ease', style(this.getCollapsedStyle())),
+          animate(this.collapseAnimationTiming, style(this.getCollapsedStyle())),
         ])
         .create(this.elementRef.nativeElement)
       animation.onDone(() => this.animationDone.emit({ toState: 'collapsed' }));

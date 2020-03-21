@@ -22,6 +22,13 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
 
   animationDone = new EventEmitter<any>();
 
+  @Input()
+  expandAnimationTiming = '200ms ease';
+
+  @Input()
+  collapseAnimationTiming = '100ms ease';
+
+
   @Input('class')
   @HostBinding('class')
   clazz = 'primary';
@@ -114,8 +121,8 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
       this.animation = this.animationBuilder
         .build([
           style(this.getCollapsedStyle()),
-          animate('200ms ease', style(this.getTransitionStyle())),
-          animate('200ms ease', style(this.getExpandedStyle())),
+          animate(this.expandAnimationTiming, style(this.getTransitionStyle())),
+          animate(this.expandAnimationTiming, style(this.getExpandedStyle())),
         ])
         .create(this.elementRef.nativeElement)
       this.animation.onDone(() => this.animationDone.emit({ toState: 'expanded' }));
@@ -126,8 +133,8 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
       this.animation = this.animationBuilder
         .build([
           style(this.getExpandedStyle()),
-          animate('100ms ease', style(this.getTransitionStyle())),
-          animate('100ms ease', style(this.getCollapsedStyle())),
+          animate(this.collapseAnimationTiming, style(this.getTransitionStyle())),
+          animate(this.collapseAnimationTiming, style(this.getCollapsedStyle())),
         ])
         .create(this.elementRef.nativeElement)
       this.animation.onDone(() => this.animationDone.emit({ toState: 'collapsed' }));

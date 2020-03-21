@@ -11,6 +11,8 @@ export class DemoComponent {
   alternate: boolean = false;
   toggle: boolean = false;
   color: boolean = false;
+  dotAnimation: boolean = true;
+  contentAnimation: boolean = true;
   size: number = 40;
   side: string = 'left';
   mobileWidthThreshold: number = 640;
