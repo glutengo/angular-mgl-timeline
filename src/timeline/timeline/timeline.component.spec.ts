@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MglTimelineComponent } from './timeline.component';
 
@@ -6,7 +6,7 @@ describe('TimelineComponent', () => {
   let component: MglTimelineComponent;
   let fixture: ComponentFixture<MglTimelineComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MglTimelineComponent ]
     })

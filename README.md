@@ -48,6 +48,9 @@ export class AppModule { }
         <mgl-timeline-entry-dot></mgl-timeline-entry-dot>
     </mgl-timeline-entry>
 </mgl-timeline>
+
+For Angular 8,9,10
+<mgl-timeline-entry-dot [size]="size" style="background-color: color;"></mgl-timeline-entry-dot>
 ```
 
 ### Include side data
