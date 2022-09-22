@@ -2,7 +2,7 @@ import {
   Component, Input, HostBinding, ElementRef, EventEmitter, Output,
   AfterViewInit, Renderer2, ChangeDetectorRef, Inject, ViewEncapsulation
 } from '@angular/core';
-import { AnimationBuilder, style, animate } from '@angular/animations';
+import { AnimationBuilder, style, animate, AnimationPlayer } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -16,9 +16,9 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   private _expanded: boolean = false;
   private _alternate: boolean = false;
   private _mobile: boolean = false;
-  private initialStyle;
+  private initialStyle!: CSSStyleDeclaration;
   private _size: number = 50;
-  private animation;
+  private animation?: AnimationPlayer;
 
   animationDone = new EventEmitter<any>();
 
@@ -72,11 +72,11 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   }
 
   constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef,
-  private renderer: Renderer2, private changeDetectorRef: ChangeDetectorRef,
-  @Inject(DOCUMENT) private document) { }
+    private renderer: Renderer2, private changeDetectorRef: ChangeDetectorRef,
+    @Inject(DOCUMENT) private document: Document) { }
 
   ngAfterViewInit() {
-    this.initialStyle = this.document.defaultView.getComputedStyle(this.elementRef.nativeElement);
+    this.initialStyle = this.document.defaultView!.getComputedStyle(this.elementRef.nativeElement);
     this.setStyle();
     this.changeDetectorRef.detectChanges();
   }
@@ -144,7 +144,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
 
   private setStyle() {
     this.destroyAnimation();
-    const baseStyle = this.expanded ? this.getExpandedStyle() : this.getCollapsedStyle();
+    const baseStyle: any = this.expanded ? this.getExpandedStyle() : this.getCollapsedStyle();
     Object.keys(baseStyle).forEach(property => {
       this.renderer.setStyle(this.elementRef.nativeElement, property, baseStyle[property])
     })

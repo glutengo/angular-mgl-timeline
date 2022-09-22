@@ -15,7 +15,7 @@ export class MglTimelineEntryContentComponent implements AfterViewInit {
   @Input()
   collapseAnimationTiming = '100ms ease';
 
-  private contentHeight;
+  private contentHeight: string;
   animationDone = new EventEmitter<any>();
 
   private _expanded: boolean = false;
@@ -77,7 +77,7 @@ export class MglTimelineEntryContentComponent implements AfterViewInit {
   setStyle() {
     const baseStyle = this.expanded ? this.getExpandedStyle() : this.getCollapsedStyle();
     Object.keys(baseStyle).forEach(property => {
-      this.renderer.setStyle(this.elementRef.nativeElement, property, baseStyle[property])
+      this.renderer.setStyle(this.elementRef.nativeElement, property, baseStyle[property as keyof typeof baseStyle])
     })
   }
 

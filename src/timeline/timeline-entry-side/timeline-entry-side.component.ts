@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'mgl-timeline-entry-side',
@@ -8,14 +8,14 @@ import { Component, Input, ElementRef, ViewEncapsulation } from '@angular/core';
 })
 export class MglTimelineEntrySideComponent {
 
-  set alternate(value) {
+  set alternate(value: boolean) {
     this.elementRef.nativeElement.classList.toggle('alternate', value);
   }
 
-  set mobile(value) {
+  set mobile(value: boolean) {
     this.elementRef.nativeElement.classList.toggle('mobile', value);
   }
-  
+
   constructor(private elementRef: ElementRef) { }
 
 }
