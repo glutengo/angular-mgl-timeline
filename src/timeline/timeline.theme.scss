@@ -1,39 +1,39 @@
 @use '@angular/material' as mat;
 
 @mixin timeline-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $typographyConfig: mat.get-typography-config($theme);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    $typographyConfig: mat.get-typography-config($theme);
 
 
-  mgl-timeline {
-    font-family: mat.font-family((font-family: $typographyConfig));
+    mgl-timeline {
+        font-family: mat.font-family((font-family: $typographyConfig));
 
-    & mgl-timeline-entry {
+        & mgl-timeline-entry {
 
-      & .mgl-timeline-entry-card {
-        @include mat.elevation(4);
-        background-color: map-get($background, card) !important;
-        color: map-get($foreground, base);
+            & .mgl-timeline-entry-card {
+                @include mat.elevation(4);
+                background-color: map-get($background, card) !important;
+                color: map-get($foreground, base);
 
-        & .mgl-timeline-entry-card-header {
-          background-color: map-get($background, app-bar) !important;
+                & .mgl-timeline-entry-card-header {
+                    background-color: map-get($background, app-bar) !important;
+                }
+            }
+
+            & mgl-timeline-entry-dot {
+                @include mat.elevation(2);
+
+                &.primary {
+                    background-color: mat.get-color-from-palette($primary);
+                }
+
+                &.accent {
+                    background-color: mat.get-color-from-palette($accent);
+                }
+            }
         }
-      }
-
-      & mgl-timeline-entry-dot {
-        @include mat.elevation(2);
-
-        &.primary {
-          background-color: mat.get-color-from-palette($primary);
-        }
-
-        &.accent {
-          background-color: mat.get-color-from-palette($accent);
-        }
-      }
     }
-  }
 }
