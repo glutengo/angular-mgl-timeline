@@ -16,7 +16,7 @@ export class MglTimelineEntryDotComponent implements AfterViewInit {
   private _expanded: boolean = false;
   private _alternate: boolean = false;
   private _mobile: boolean = false;
-  private initialStyle!: CSSStyleDeclaration;
+  private initialStyle: CSSStyleDeclaration;
   private _size: number = 50;
   private animation?: AnimationPlayer;
 

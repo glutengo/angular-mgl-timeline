@@ -10,6 +10,11 @@
     "lint": "ng lint",
     "package": "ng-packagr -p ng-package.json && cp src/timeline/timeline.theme.scss dist/theme.scss"
   },
+  "exports": {
+    ".": {
+      "sass": "./theme.scss"
+    }
+  },
   "peerDependencies": {
     "@angular/animations": "^14.0.0",
     "@angular/common": "^14.0.0",
