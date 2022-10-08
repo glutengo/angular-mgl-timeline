@@ -35,7 +35,7 @@ export class DemoComponent {
     this.entries.pop();
   }
 
-  onExpand(event, index) {
+  onExpand(event: boolean, index: number) {
     console.log(event, index);
   }
 

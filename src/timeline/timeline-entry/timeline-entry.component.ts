@@ -1,6 +1,6 @@
-import {HostBinding, ViewEncapsulation} from '@angular/core';
+import { HostBinding, ViewEncapsulation } from '@angular/core';
 import { MglTimelineEntrySideComponent } from './../timeline-entry-side/timeline-entry-side.component';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { MglTimelineEntryDotComponent } from './../timeline-entry-dot/timeline-entry-dot.component';
 import {
   Component, AfterViewInit, Output, EventEmitter, ContentChild, OnDestroy, ElementRef
@@ -36,7 +36,7 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
 
   private _mobile: boolean = false;
 
-  set mobile(value) {
+  set mobile(value: boolean) {
     this.elementRef.nativeElement.classList.toggle('mobile', value);
     if (this.dot) {
       this.dot.mobile = value;
@@ -115,7 +115,7 @@ export class MglTimelineEntryComponent implements AfterViewInit, OnDestroy {
   }
 
   private containsInPath(mouseEvent: MouseEvent, name: string): boolean {
-    let currentElem: Element = mouseEvent.target as Element;
+    let currentElem: Element | null = mouseEvent.target as Element;
     while (currentElem) {
       if (currentElem.localName === name) {
         return true;

@@ -69,12 +69,12 @@ For Angular 8,9,10
 The package includes a theme for angular material. In your own angular material theme:
 
 ```scss
-@import '~@angular/material/theming';
-@import '~angular-mgl-timeline/theme';
+@use '@angular/material' as mat;
+@use 'angular-mgl-timeline' as mgl;
 ...
 
-@include angular-material-theme($your-theme);
-@include mgl-timeline-theme($your-theme);
+@include mat.all-component-themes($your-theme);
+@include mgl.timeline-theme($your-theme);
 ```
 If the theme is included, the components will be styled according to `$your-theme` including support for primary and accent colors for the dot.
 
@@ -136,21 +136,6 @@ The `expanded` class will be added to the timeline-entry compnent when the entry
 | expandAnimationTiming    | string  | '200ms ease' | Controls the animation speed of the dot of an entry. Set to `0ms` to disable the animation   |
 | collapseAnimationTiming  | string  | '100ms ease' | Controls the animation speed of the dot of an entry. Set to `0ms` to disable the animation   |
 
-
-## Polyfills
-
-### Smoothscroll
-When an entry is toggled, it will scroll into view. Smooth behavior is currently not supported in Chrome. A polyfill is available in [iamdustan's smoothscroll](https://github.com/iamdustan/smoothscroll)
-
-### ClassList
-`ClassList.toggle` was used at some points, including the second parameter. If you need to support [browsers which do not support this](https://caniuse.com/#feat=classlist), be sure to use a polyfill, e.g. [this one](https://github.com/eligrey/classList.js/).
-
-### Web Animations API
-Animations are implemented with Angular animations which are based on the web animations API which has not landed in Safari and Edge yet. A polyfill is available in [Web Animations JS](https://github.com/web-animations/web-animations-js)
-
-## About
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
-The NPM Version was packend with [ng-packagr](https://github.com/dherges/ng-packagr).
 
 ## License
 MIT License (c) Markus Glutting
