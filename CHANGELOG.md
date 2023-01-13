@@ -1,3 +1,7 @@
+# 1.1.0
+
+- Support for Angular 15
+
 
 # 1.0.0
 
