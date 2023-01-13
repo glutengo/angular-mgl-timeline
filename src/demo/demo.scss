@@ -6,7 +6,7 @@
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat.core;
+@include mat.legacy-core();
 
 html, body {
     font-family: sans-serif;
@@ -22,10 +22,10 @@ $mgl-app-accent:  mat.define-palette(mat.$orange-palette);
 $mgl-app-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$mgl-app-theme: mat.define-light-theme($mgl-app-primary, $mgl-app-accent, $mgl-app-warn);
+$mgl-app-theme: mat.define-light-theme((color: (primary: $mgl-app-primary, accent: $mgl-app-accent, warn: $mgl-app-warn)));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($mgl-app-theme);
+@include mat.all-legacy-component-themes($mgl-app-theme);
 @include mgl.timeline-theme($mgl-app-theme);
